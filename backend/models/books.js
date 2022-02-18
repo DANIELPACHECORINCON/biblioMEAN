@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema({
+    id: String,
     name: String,
-    wirter: String,
+    writer: String,
     section: String,
     editorial: String,
     copy: Number,
-    bookStatus: "available",
+    bookStatus: String,
     registerDate: { type: Date, default: Date.now}
 });
 
