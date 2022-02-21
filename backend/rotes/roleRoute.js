@@ -6,7 +6,13 @@ import roleValidate from "../middleware/roleValidate.js";
 const router = express.Router();
 
 // http://localhost:3001/api/role/registerRole aca asignamos la ruta de la api y le decimos que vaya al controlador
-router.post("/registerRole", roleValidate.exixtingRole2, roleController.registerRole);
+router.post(
+  "/registerRole",
+  roleValidate.exixtingRole2,
+  roleController.registerRole
+);
 router.get("/listRole", roleController.listRole);
+router.put("/deleteRole/:_id", roleController.deleteRole);
+router.put("/updateRole", roleController.updateRoleAdmin);
 
 export default router;

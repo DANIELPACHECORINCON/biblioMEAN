@@ -16,5 +16,6 @@ router.post(
 );
 // aca le decimo que en la url puede o no venir un parametro y que si viene que lo use en el listUser
 router.get("/listLending", lendingController.listLending);
+router.put("/updateLending", lendingController.updateLending);
 
 export default router;

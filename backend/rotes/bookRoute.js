@@ -15,5 +15,7 @@ router.post(
 );
 // aca le decimo que en la url puede o no venir un parametro y que si viene que lo use en el listUser
 router.get("/listBook/:name?", bookController.listBook);
+router.put("/deleteBook/:_id", bookController.deleteBook);
+router.put("/updateBook", bookController.updateBook);
 
 export default router;

@@ -79,4 +79,48 @@ const login = async (req, res) => {
   }
 };
 
-export default { registerUser, listUser, login };
+const deleteUser = async (req, res) => {
+  if (!req.params["_id"])
+    return res.status(400).send({ message: "Imcomplete data" });
+
+  const users = await userModel.findByIdAndUpdate(req.params["_id"], {
+    dbStatus: "false",
+  });
+
+  return !users
+    ? res.status(500).send({ message: "Error deleting user" })
+    : res.status(200).send({ message: "User deleted" });
+};
+
+const updateUserAdmin = async (req, res) => {
+  if (
+    (!req.body._id ||
+      !req.body.name ||
+      !req.body.role ||
+      !req.body.email ||
+      !req.body.phoneNumber)
+  )
+    return res.status(400).send({ message: "Incomplete data." });
+
+  let pass = "";
+
+  if (!req.body.password) {
+    const findUser = await userModel.findOne({ email: req.body.email });0
+
+    pass = findUser.password;
+  } else {
+    pass = await bcrypt.hash(req.body.password, 10);
+  }
+
+  const users = await userModel.findByIdAndUpdate(req.body._id, {
+    name: req.body.name,
+    phoneNumber: req.body.phoneNumber,
+    password: pass,
+    role: req.body.role,
+  });
+
+  if (!users) return res.status(500).send({ message: "Error updating user" });
+  return res.status(200).send({ message: "User updated" });
+};
+
+export default { registerUser, listUser, login, deleteUser, updateUserAdmin };
