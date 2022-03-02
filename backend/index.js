@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import db from "./db/db.js";
-import bookRoute from "./rotes/bookRoute.js";
-import lendingRoute from "./rotes/lendingRoute.js";
-import roleRoute from "./rotes/roleRoute.js";
-import userRoute from "./rotes/userRote.js";
+import bookRoute from "./routes/bookRoute.js";
+import lendingRoute from "./routes/lendingRoute.js";
+import roleRoute from "./routes/roleRoute.js";
+import userRoute from "./routes/userRote.js";
 import dotenv from "dotenv";
 dotenv.config();
 

@@ -1,5 +1,7 @@
 import userModel from "../models/users.js";
 import bcrypt from "bcrypt";
+import  jwt  from "jsonwebtoken";
+import moment from "moment";
 
 const registerUser = async (req, res) => {
   if (!req.body.name || !req.body.phoneNumber || !req.body.password)
@@ -25,15 +27,16 @@ const registerUser = async (req, res) => {
     return res.status(200).json({
       token: jwt.sign(
         {
-          _id: userLogin._id,
-          name: userLogin.name,
-          roleID: userLogin.role,
+          _id: result._id,
+          name: result.name,
+          roleID: result.role,
           iat: moment().unix(),
         },
         process.env.SK_JWT
       ),
     });
   } catch (e) {
+    console.log(e);
     return res.status(500).send({ message: "Register error" });
   }
 };

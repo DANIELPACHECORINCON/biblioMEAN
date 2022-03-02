@@ -1,0 +1,53 @@
+<div class="bgComponent">
+  <div class="form">
+    <mat-card class="card">
+      <mat-card-title>Registrar usuario</mat-card-title>
+      <mat-card-content>
+        <div class="container">
+          <mat-form-field>
+            <input
+              [(ngModel)]="registerData.name"
+              matInput
+              placeholder="Nombre y apellidos"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              [(ngModel)]="registerData.email"
+              matInput
+              placeholder="Email"
+              type="email"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              [(ngModel)]="registerData.phoneNumber"
+              matInput
+              required
+              placeholder="Numero de telefono"
+              type="number"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              [(ngModel)]="registerData.password"
+              matInput
+              required
+              placeholder="Contraseña"
+              type="password"
+            />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          (click)="registerUser()"
+          class="button"
+          mat-raised-button
+        >Registrar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
