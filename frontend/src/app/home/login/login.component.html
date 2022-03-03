@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <mat-card-title>Iniciar sesion</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+              <input
+                [(ngModel)]="loginData.email"
+                matInput
+                placeholder="Email"
+                type="email"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="loginData.password"
+                matInput
+                required
+                placeholder="Contraseña"
+                type="password"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            (click)="login()"
+            class="button"
+            mat-raised-button
+          >Iniciar sesion</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  
