@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListBookComponent } from './board/list-book/list-book.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
+import { AuthGuard } from "./guard/auth.guard";
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'listBook',
-    component: ListBookComponent
+    component: ListBookComponent,
+    canActivate: [AuthGuard],
   }
 ];
 
