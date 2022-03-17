@@ -1,1 +1,134 @@
-<p>list-book works!</p>
+<!-- <div class="accordion_display">
+  <div class="accordion_size">
+    <mat-accordion multi="true" *ngIf="bookData.length">
+      <mat-expansion-panel *ngFor="let book of bookData">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span>{{ book.id }}</span>
+            <span class="spacer"></span>
+            <span>{{ book.name }}</span>
+            <span class="spacer"></span>
+            <button
+              class="btnAvailable"
+              *ngIf="book.bookStatus == 'available'"
+              mat-raised-button
+            >
+              {{ book.bookStatus }}
+            </button>
+            <button
+              class="btnBorrowed"
+              *ngIf="book.bookStatus == 'borrowed'"
+              mat-raised-button
+            >
+              {{ book.taskStatus }}
+            </button>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-panel-description>
+          {{ book.writer }}
+          <span class="spacer"></span>
+          {{ book.editorial }}
+        </mat-panel-description>
+        <mat-action-row>
+          <button
+          *ngIf="book.bookStatus != 'available'"
+            class="btnAvailable"
+            mat-raised-button
+            (click)="updateBook(book, 'available')"
+          >
+          Available
+          </button>
+          <button
+          *ngIf="book.bookStatus != 'borrowed'"
+            class="btnBorrowed"
+            mat-raised-button
+            (click)="updateBook(book, 'borrowed')"
+          >
+          borrow
+          </button>
+          <span class="spacer"></span>
+          <mat-icon color="primary" (click)="deleteBook(book)">delete</mat-icon>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div> -->
+
+
+<div class="bgComponent">
+    <div class="container">
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" routerLink="/registerBook">
+          New book
+        </button>
+      </div>
+      <mat-form-field class="bgShearch">
+        <mat-label>search book</mat-label>
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. Pepita"
+          #input
+        />
+      </mat-form-field>
+  
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="ID">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+                <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+              </ng-container>
+          <ng-container matColumnDef="NAME">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>NAME</th>
+            <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="ESCRITOR">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ESCRITOR</th>
+            <td mat-cell *matCellDef="let row">{{ row.writer }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="EDITORIAL">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>EDITORIAL</th>
+            <td mat-cell *matCellDef="let row">{{ row.editorial }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="STATUS">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>DB STATUS</th>
+            <td mat-cell *matCellDef="let row">{{ row.bookStatus }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="ACTIONS">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ACTIONS</th>
+            <td mat-cell *matCellDef="let row">
+              <!-- <mat-icon
+                class="colorUpdate updateIcon"
+                [routerLink]="['/updateUser/', row._id]"
+                >border_color</mat-icon
+              > -->
+              <mat-icon>maximize</mat-icon>
+              <mat-icon>maximize</mat-icon>
+              <mat-icon class="colorDelete deleteIcon" (click)="deleteBook(row)"
+                >delete_forever</mat-icon
+              >
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">
+              No user found "{{ input.value }}"
+            </td>
+          </tr>
+        </table>
+  
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 15]"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
+  </div>
+  

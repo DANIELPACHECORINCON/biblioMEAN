@@ -2,6 +2,9 @@
     <ul>
         <a *ngIf="_userService.loggedIn()" routerLink="listBook">Listar libros</a>
     </ul>
+    <ul>
+        <a *ngIf="_userService.loggedIn()" routerLink="registerBook">Registrar libros</a>
+    </ul>
     <span class="headerSpacer"></span>
     <ul>
         <a *ngIf="!_userService.loggedIn()" mat-button routerLink="signUp">Sign Up</a>

@@ -1,0 +1,68 @@
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <mat-card-title>Registrar libro</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+                <input
+                  [(ngModel)]="saveData.id"
+                  matInput
+                  placeholder="Id"
+                  required
+                />
+              </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="saveData.name"
+                matInput
+                placeholder="Nombre"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="saveData.writer"
+                matInput
+                placeholder="Escritor"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="saveData.section"
+                matInput
+                required
+                placeholder="Seccion"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="saveData.editorial"
+                matInput
+                required
+                placeholder="Editorial"
+              />
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                  [(ngModel)]="saveData.copy"
+                  matInput
+                  required
+                  placeholder="Numero de copias"
+                  type="number"
+                />
+              </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            (click)="registerBook()"
+            class="button"
+            mat-raised-button
+          >Registrar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  

@@ -29,7 +29,7 @@ const registerBook = async (req, res) => {
 };
 
 const listBook = async (req, res) => {
-  let books = await bookModel.find({ name: new RegExp(req.params["name"]) });
+  const books = await bookModel.find({ name: new RegExp(req.params["name"]) });
 
   if (books.lenght === 0)
     return res.status(400).send({ message: "no search result" });
